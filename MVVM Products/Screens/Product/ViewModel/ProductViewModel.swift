@@ -13,6 +13,24 @@ final class ProductViewModel {
     
     func fetchProducts() {
         self.eventHandler?(.startLoading)
+        APIManager.shared.request(
+            modelType: [Product].self,
+            type: EndPointItems.products) { result in
+                self.eventHandler?(.stopLoading)
+                switch result {
+                case .success(let productList):
+                    self.product = productList
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    print(error)
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
+    
+    /*
+    func fetchProducts() {
+        self.eventHandler?(.startLoading)
         APIManager.shared.fetchProducts { result in
             self.eventHandler?(.stopLoading)
             switch result {
@@ -25,6 +43,7 @@ final class ProductViewModel {
             }
         }
     }
+     */
 }
 
 // MARK: Data Binding
