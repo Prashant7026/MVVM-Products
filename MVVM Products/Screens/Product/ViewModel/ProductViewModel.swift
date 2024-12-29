@@ -15,7 +15,7 @@ final class ProductViewModel {
         self.eventHandler?(.startLoading)
         APIManager.shared.request(
             modelType: [Product].self,
-            type: EndPointItems.products) { result in
+            type: ProductEndPoint.products) { result in
                 self.eventHandler?(.stopLoading)
                 switch result {
                 case .success(let productList):
@@ -44,11 +44,27 @@ final class ProductViewModel {
         }
     }
      */
+    
+    func addProduct(_ addProduct: AddProduct) {
+        self.eventHandler?(.startLoading)
+        APIManager.shared.request(
+            modelType: AddProduct.self,
+            type: ProductEndPoint.addProduct(product: addProduct)) { result in
+                self.eventHandler?(.stopLoading)
+                switch result{
+                case .success(let product):
+                    self.eventHandler?(.newProductAdded(product: product))
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
 }
 
 // MARK: Data Binding
 extension ProductViewModel {
     enum Event{
         case startLoading, stopLoading, dataLoaded, error(Error?)
+        case newProductAdded(product: AddProduct)
     }
 }

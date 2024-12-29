@@ -24,7 +24,13 @@ final class APIManager {
     
     private init() {}
     
-    func request<T: Decodable>(                     // Coz Product Model is confirming to Decodable Protocol
+    static var commonAPIHeader: [String : String] {
+        return [
+            "Content-Type" : "application/json"
+        ]
+    }
+    
+    func request<T: Codable>(                     // Coz Product Model is confirming to Decodable Protocol
         modelType: T.Type,                          // ----> Inside do block: [Product].self
         type: EndPointType,
         completion: @escaping Handler<T>
@@ -34,7 +40,18 @@ final class APIManager {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = type.method.rawValue
+        
+        // When body is there then httpbody is going means for product body is nil
+        if let parameter = type.body{
+            request.httpBody = try? JSONEncoder().encode(parameter)
+        }
+        request.allHTTPHeaderFields = type.headers
+        
+        // Background Task
+        URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data, error == nil else {
                 completion(.failure(.invalidData))
                 return

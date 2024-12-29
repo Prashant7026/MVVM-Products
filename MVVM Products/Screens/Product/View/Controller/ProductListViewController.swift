@@ -21,6 +21,10 @@ class ProductListViewController: UIViewController {
         configuration()
     }
 
+    @IBAction func addProductBtnTapped(_ sender: Any) {
+        let product = AddProduct(title: "Prashant Kumar Soni")
+        viewModel.addProduct(product)
+    }
 }
 
 extension ProductListViewController {
@@ -53,6 +57,8 @@ extension ProductListViewController {
                 }
             case .error(let error):
                 print(error)
+            case .newProductAdded(let newProduct):
+                print(newProduct)
             }
         }
     }
@@ -73,4 +79,8 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         
         return cell
     }
+}
+
+extension ProductListViewController {
+    
 }

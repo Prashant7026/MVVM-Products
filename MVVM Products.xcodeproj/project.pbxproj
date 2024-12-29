@@ -16,6 +16,9 @@
 		E15F05F12D1EFF4F003F355D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15F05EE2D1EFF4F003F355D /* ProductTableViewCell.swift */; };
 		E1A884C72D1F092700760D88 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E1A884C62D1F092700760D88 /* Kingfisher */; };
 		E1A884C92D1F093B00760D88 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A884C82D1F093B00760D88 /* UIImageView + Extension.swift */; };
+		E1B0E4A22D214BE500638700 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4A12D214BE500638700 /* AddProductViewController.swift */; };
+		E1B0E4A42D216A1300638700 /* AddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4A32D216A0F00638700 /* AddProduct.swift */; };
+		E1B0E4A62D216A4800638700 /* ProductEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4A52D216A4200638700 /* ProductEndPoint.swift */; };
 		E1B3C9052D12DF7100AEB012 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3C9042D12DF7100AEB012 /* APIManager.swift */; };
 		E1D2A7672D1E3B18004C15E8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D2A7662D1E3B15004C15E8 /* Constant.swift */; };
 		E1D2A7692D1E401E004C15E8 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D2A7682D1E401E004C15E8 /* ProductListViewController.swift */; };
@@ -35,6 +38,9 @@
 		E15F05EE2D1EFF4F003F355D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		E15F05EF2D1EFF4F003F355D /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		E1A884C82D1F093B00760D88 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		E1B0E4A12D214BE500638700 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
+		E1B0E4A32D216A0F00638700 /* AddProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProduct.swift; sourceTree = "<group>"; };
+		E1B0E4A52D216A4200638700 /* ProductEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEndPoint.swift; sourceTree = "<group>"; };
 		E1B3C9042D12DF7100AEB012 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E1D2A7662D1E3B15004C15E8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E1D2A7682D1E401E004C15E8 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		E14041132D12DA22005BBBFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0E4A32D216A0F00638700 /* AddProduct.swift */,
 				E14041162D12DB25005BBBFF /* Product.swift */,
 			);
 			path = Model;
@@ -185,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				E1D2A7682D1E401E004C15E8 /* ProductListViewController.swift */,
+				E1B0E4A12D214BE500638700 /* AddProductViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 		E1E60A032D1FEDDE00603EEA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0E4A52D216A4200638700 /* ProductEndPoint.swift */,
 				E1E60A022D1FEDDE00603EEA /* EndPointType.swift */,
 			);
 			path = Utility;
@@ -276,10 +285,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B0E4A22D214BE500638700 /* AddProductViewController.swift in Sources */,
 				E1A884C92D1F093B00760D88 /* UIImageView + Extension.swift in Sources */,
+				E1B0E4A62D216A4800638700 /* ProductEndPoint.swift in Sources */,
 				E10A5B032D1EE42C00EC0DDD /* ProductViewModel.swift in Sources */,
 				E15F05F12D1EFF4F003F355D /* ProductTableViewCell.swift in Sources */,
 				E1B3C9052D12DF7100AEB012 /* APIManager.swift in Sources */,
+				E1B0E4A42D216A1300638700 /* AddProduct.swift in Sources */,
 				E14041102D12D9BB005BBBFF /* AppDelegate.swift in Sources */,
 				E1D2A7672D1E3B18004C15E8 /* Constant.swift in Sources */,
 				E14041112D12D9BB005BBBFF /* SceneDelegate.swift in Sources */,
