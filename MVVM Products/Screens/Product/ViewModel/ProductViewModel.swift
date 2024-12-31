@@ -11,7 +11,9 @@ final class ProductViewModel {
     var product: [Product] = []
     var eventHandler: ((_ event: Event) -> Void)?    // Data Binding
     
+    // MARK: URL Session
     func fetchProducts() {
+        /*
         self.eventHandler?(.startLoading)
         APIManager.shared.request(
             modelType: [Product].self,
@@ -26,6 +28,7 @@ final class ProductViewModel {
                     self.eventHandler?(.error(error))
                 }
             }
+         */
     }
     
     /*
@@ -58,6 +61,28 @@ final class ProductViewModel {
                     self.eventHandler?(.error(error))
                 }
             }
+    }
+}
+
+// MARK: Async Await
+extension ProductViewModel {
+//    @MainActor -> Use instead of DispatchQueue.main.async{}
+    /*@MainActor*/ func useAsyncAwait() {
+        self.eventHandler?(.startLoading)
+        Task {
+            do {
+                let userResponseArray = try await APIManager.shared.useAsyncAwait(
+                    modelType: [Product].self,
+                    type: ProductEndPoint.products
+                )
+                self.eventHandler?(.stopLoading)
+                self.eventHandler?(.dataLoaded)
+                self.product = userResponseArray
+            } catch {
+                self.eventHandler?(.error(error))
+                print("UseAsyncAwait Method Error -> \(error)")
+            }
+        }
     }
 }
 

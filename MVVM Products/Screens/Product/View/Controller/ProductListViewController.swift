@@ -36,6 +36,7 @@ extension ProductListViewController {
     
     private func initViewModel() {
         viewModel.fetchProducts()
+        viewModel.useAsyncAwait()
     }
     
     // Data Binding observe here - Communication

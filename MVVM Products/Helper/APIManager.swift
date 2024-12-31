@@ -106,6 +106,24 @@ final class APIManager {
         }.resume()
     }
      */
+    
+    func useAsyncAwait<T: Codable>(
+        modelType: T.Type,
+        type: EndPointType
+    ) async throws -> T {
+        guard let url = type.url else {
+            throw DataError.invalidURL
+        }
+        
+        // Await will wait until or unless not getting response after that it'll go to execute next lines
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw DataError.invalidResponse
+        }
+        
+        return try JSONDecoder().decode(modelType, from: data)
+    }
 }
 
 
